@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: msakalin <msakalin@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/02 09:45:09 by msakalin          #+#    #+#             */
+/*   Updated: 2026/02/02 09:45:34 by msakalin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -31,4 +43,7 @@ void				rrr(t_node **stack_a);
 void				free_split(char **split);
 void				free_stake(t_node **stake);
 int             	parse_argv(char **argv, t_node **stack_a);
+int		ra(t_node **stack_a);
+int		rb(t_node **stack_a);
+void	rr(t_node **stack_b, t_node **stack_a);
 #endif
