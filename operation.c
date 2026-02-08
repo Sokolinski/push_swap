@@ -6,7 +6,7 @@
 /*   By: jp <jp@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 18:05:03 by jp                #+#    #+#             */
-/*   Updated: 2026/01/21 18:54:49 by jp               ###   ########.fr       */
+/*   Updated: 2026/02/06 15:31:18 by jp               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,18 @@ int	push(t_node **from, t_node **to)
 
 	if (node_len(*from) == 0)
 		return (0);
+	if(!to)
+	{
+		*to = new_node(from_head->value);
+		return(1);
+	}
 	from_head = *from;
 	to_head = *to;
 	*from = from_head->next;
 	*to = from_head;
 	from_head->next = to_head;
+	if(node_len(*from) == 1)
+		*from = NULL;
 	return (1);
 }
 int	error_meseage(void)
