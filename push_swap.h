@@ -6,7 +6,7 @@
 /*   By: jp <jp@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 09:45:09 by msakalin          #+#    #+#             */
-/*   Updated: 2026/02/08 12:53:42 by jp               ###   ########.fr       */
+/*   Updated: 2026/02/08 15:09:02 by jp               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,7 @@ int					parse_argv(char **argv, t_node **stack_a);
 int					ra(t_node **stack_a);
 int					rb(t_node **stack_b);
 void				rr(t_node **stack_a, t_node **stack_b);
+void				move_b(t_node **stack_a, t_node **stack_b);
 void				move_a(t_node **stack_a, t_node **stack_b);
+void				sort_stack(t_node **stack_a, t_node **stack_b);
 #endif

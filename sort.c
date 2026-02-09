@@ -6,14 +6,14 @@
 /*   By: jp <jp@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 18:15:31 by jp                #+#    #+#             */
-/*   Updated: 2026/02/06 13:37:50 by jp               ###   ########.fr       */
+/*   Updated: 2026/02/08 15:07:09 by jp               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 static bool is_sorted(t_node *head);
-static index_stack(t_node *stack);
+static void index_stack(t_node *stack);
 
 static bool is_sorted(t_node *head)
 {
@@ -37,9 +37,10 @@ void sort_stack(t_node **stack_a, t_node **stack_b)
 		return;
 	index_stack(*stack_a);
 	move_a(stack_a,stack_b);
+	move_b(stack_a,stack_b);
 }
 
-static index_stack(t_node *stack)
+static void index_stack(t_node *stack)
 {
 	t_node *current;
 	t_node *head;
@@ -62,7 +63,5 @@ static index_stack(t_node *stack)
 		current = current->next;
 	}
 }
- void move_a(t_node **stack_a,t_node **stack_b)
-{
-	
-}
+
+

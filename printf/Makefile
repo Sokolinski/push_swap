@@ -3,8 +3,7 @@ CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 RM = rm -fr
 
-SRC = ft_itoa.c \
-ft_print_char.c \
+SRC = ft_print_char.c \
 ft_print_number.c \
 ft_print_string.c\
 ft_ptint_hex.c \

@@ -6,7 +6,7 @@
 /*   By: jp <jp@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 18:05:03 by jp                #+#    #+#             */
-/*   Updated: 2026/02/06 15:31:18 by jp               ###   ########.fr       */
+/*   Updated: 2026/02/08 16:11:54 by jp               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,28 +30,22 @@ int	swap(t_node **stack)
 }
 int	push(t_node **from, t_node **to)
 {
-	t_node	*from_head;
-	t_node	*to_head;
+	t_node	*node;
 
-	if (node_len(*from) == 0)
+	if (!from || !*from)
 		return (0);
-	if(!to)
-	{
-		*to = new_node(from_head->value);
-		return(1);
-	}
-	from_head = *from;
-	to_head = *to;
-	*from = from_head->next;
-	*to = from_head;
-	from_head->next = to_head;
-	if(node_len(*from) == 1)
-		*from = NULL;
+
+	node = *from;        
+	*from = node->next;   
+	node->next = *to;      
+	*to = node;            
+
 	return (1);
 }
+
 int	error_meseage(void)
 {
-	return (write(1, "EROR\n", 5));
+	return (write(1, "Eror\n", 5));
 }
 int	rotate(t_node **stack)
 {

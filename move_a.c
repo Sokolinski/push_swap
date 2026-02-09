@@ -6,7 +6,7 @@
 /*   By: jp <jp@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 10:59:59 by jp                #+#    #+#             */
-/*   Updated: 2026/02/08 12:48:35 by jp               ###   ########.fr       */
+/*   Updated: 2026/02/08 15:39:57 by jp               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static int	find_cheapest(t_node *stack_a, int limit);
 static void	push_b(t_node **stack_a, t_node **stack_b, int mid, int poss);
+static int get_chunck_size(t_node *stack_a);
 
 void	move_a(t_node **stack_a, t_node **stack_b)
 {
@@ -23,10 +24,7 @@ void	move_a(t_node **stack_a, t_node **stack_b)
 	int	poss;
 	int	mid;
 
-	if (node_len(*stack_a) <= 100)
-		chnuck_size = node_len(*stack_a) / 5;
-	else
-		chnuck_size = node_len(*stack_a) / 11;
+	chnuck_size = get_chunck_size(*stack_a);
 	limit = chnuck_size;
 	pushed = 0;
 	mid = limit - chnuck_size + chnuck_size / 2;
@@ -49,22 +47,20 @@ static int	find_cheapest(t_node *stack_a, int limit)
 	int		index_top;
 	int		index_bot;
 	t_node	*current;
+	int		total_len;
 
 	index_top = 0;
 	index_bot = 0;
+	total_len = node_len(stack_a);
 	current = stack_a;
 	while (current && current->index > limit)
 	{
 		current = current->next;
 		index_top++;
 	}
-	current = stack_a;
-	while (current)
-	{
-		if (current->index <= limit)
-			index_bot = node_len(current);
-		current = current->next;
-	}
+	if (!current)
+		return (-1);
+	index_bot = total_len - index_top;
 	if (index_top <= index_bot)
 		return (index_top);
 	return (index_bot * -1);
@@ -94,4 +90,16 @@ static void	push_b(t_node **stack_a, t_node **stack_b, int mid, int poss)
 			rb(stack_b);
 	}
 	return ;
+}
+static int get_chunck_size(t_node *stack_a)
+{
+	int len;
+
+	len = node_len(stack_a);
+	if(len <= 100 && len > 5)
+		return (len / 5);
+	else if(len <= 5)
+		return(1);
+	else 
+		return(len / 11);
 }

@@ -6,7 +6,7 @@
 /*   By: jp <jp@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 19:54:38 by jp                #+#    #+#             */
-/*   Updated: 2026/01/21 19:16:36 by jp               ###   ########.fr       */
+/*   Updated: 2026/02/08 15:28:24 by jp               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int	main(int args, char **argv)
 		free_stake(stack_a);
 		return (free(stack_a), free(stack_b), error_meseage());
 	}
-
+	
+	sort_stack(stack_a, stack_b);
 	free_stake(stack_a);
 	free_stake(stack_b);
 	return (free(stack_a), free(stack_b), 0);
